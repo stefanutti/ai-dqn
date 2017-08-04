@@ -27,7 +27,7 @@
 - pip install tensorflow or pip install tensorflow-gpu (for GPU)
 
 ## Install - DQN
-- Read the installation info from here: https://github.com/devsisters/DQN-tensorflow
+- Read the installation info from here if you need additional info: https://github.com/devsisters/DQN-tensorflow. Next are the commands I have executed
   - cd
   - mkdir experiments
   - cd experiments 
