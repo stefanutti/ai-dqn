@@ -1,17 +1,17 @@
 This page contains notes about machine learning experiments done with Tensorflow.
 
-These are the experiments that I replicated from others:
+## These are the experiments that I replicated from others:
 
 - https://github.com/googlecodelabs/tensorflow-for-poets-2
 - https://github.com/devsisters/DQN-tensorflow
 
-Base image from Docker store:
+## Base image from Docker store:
 - docker pull nvidia/cuda:8.0-cudnn5-runtime-ubuntu16.04
 
 Note:
 - If you don't have a GPU graphic card, you can start from the ubuntu 16.04 image and use docker instead of nvidia-docker. Not much else has to be changed
 
-Start a container:
+## Start a container:
 - nvidia-docker run -it --name ai-dqn -v /tmp/.X11-unix:/tmp/.X11-unix -v /docker-mounts:/docker-mounts -e DISPLAY=unix$DISPLAY --device /dev/dri --device /dev/snd nvidia/cuda:8.0-cudnn5-runtime-ubuntu16.04 bash
 
 ## Install - utilities
