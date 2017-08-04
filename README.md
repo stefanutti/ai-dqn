@@ -8,7 +8,7 @@ This page contains notes about machine learning experiments done with Tensorflow
 ## Base image from Docker store:
 - docker pull nvidia/cuda:8.0-cudnn5-runtime-ubuntu16.04
 
-Note:
+## Note:
 - If you don't have a GPU graphic card, you can start from the ubuntu 16.04 image and use docker instead of nvidia-docker. Not much else has to be changed
 
 ## Start a container:
@@ -62,3 +62,5 @@ Note:
 - nvidia-docker start ai-dqn
 - nvidia-docker exec -it ai-dqn bash
 - nvidia-docker stop ai-dqn
+
+Bye
