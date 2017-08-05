@@ -1,4 +1,4 @@
-# This page contains notes about machine learning experiments done with Tensorflow.
+# Eexperiments if ML with Tensorflow
 
 ## These are the experiments that I replicated:
 
@@ -12,7 +12,7 @@
 - If you don't have a GPU graphic card, you can start from the ubuntu 16.04 image and use docker instead of nvidia-docker. Not much else has to be changed
 
 ## Start a container:
-- nvidia-docker run -it --name ai-dqn -v /tmp/.X11-unix:/tmp/.X11-unix -v /docker-mounts:/docker-mounts -e DISPLAY=unix$DISPLAY --device /dev/dri --device /dev/snd nvidia/cuda:8.0-cudnn5-runtime-ubuntu16.04 bash
+- nvidia-docker run -it --name ai-dqn -p 6006:6006 -v /tmp/.X11-unix:/tmp/.X11-unix -v /docker-mounts:/docker-mounts -e DISPLAY=unix$DISPLAY --device /dev/dri --device /dev/snd nvidia/cuda:8.0-cudnn5-runtime-ubuntu16.04 bash
 
 ## Install - utilities
 - apt-get update
@@ -56,11 +56,14 @@
 ## Save an image of this container:
 - nvidia-docker commit ai-dqn stefanutti/cuda:8.0-cudnn5-runtime-ubuntu16.04-tf-dqn-1.2
  nvidia-docker rm ai-dqn
-- nvidia-docker run -it --name ai-dqn -v /tmp/.X11-unix:/tmp/.X11-unix -v /docker-mounts:/docker-mounts -e DISPLAY=unix$DISPLAY --device /dev/dri --device /dev/snd stefanutti/cuda:8.0-cudnn5-runtime-ubuntu16.04-tf-dqn-1.2 bash
+- nvidia-docker run -it --name ai-dqn -p -v /tmp/.X11-unix:/tmp/.X11-unix -v /docker-mounts:/docker-mounts -e DISPLAY=unix$DISPLAY --device /dev/dri --device /dev/snd stefanutti/cuda:8.0-cudnn5-runtime-ubuntu16.04-tf-dqn-1.2 bash
 
 ## Other useful commands:
 - nvidia-docker start ai-dqn
 - nvidia-docker exec -it ai-dqn bash
 - nvidia-docker stop ai-dqn
+
+## Extra
+- tensorboard --logdir training_summaries &
 
 Bye
