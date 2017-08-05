@@ -1,11 +1,11 @@
 # This page contains notes about machine learning experiments done with Tensorflow.
 
-## These are the experiments that I replicated from others:
+## These are the experiments that I replicated:
 
 - https://github.com/googlecodelabs/tensorflow-for-poets-2
 - https://github.com/devsisters/DQN-tensorflow
 
-## Base image from Docker store:
+## Base image:
 - docker pull nvidia/cuda:8.0-cudnn5-runtime-ubuntu16.04
 
 ## Note:
