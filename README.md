@@ -1,4 +1,4 @@
-# Eexperiments if ML with Tensorflow
+# Experiments of ML with Tensorflow
 
 ## These are the experiments that I replicated:
 
@@ -9,10 +9,12 @@
 - docker pull nvidia/cuda:8.0-cudnn5-runtime-ubuntu16.04
 
 ## Note:
+- I have Ubuntu 16.04 and an Nvidia card gtx 1050
 - If you don't have a GPU graphic card, you can start from the ubuntu 16.04 image and use docker instead of nvidia-docker. Not much else has to be changed
 
 ## Start a container:
 - nvidia-docker run -it --name ai-dqn -p 6006:6006 -v /tmp/.X11-unix:/tmp/.X11-unix -v /docker-mounts:/docker-mounts -e DISPLAY=unix$DISPLAY --device /dev/dri --device /dev/snd nvidia/cuda:8.0-cudnn5-runtime-ubuntu16.04 bash
+  - port 6006 is the standard Tensorboard port
 
 ## Install - utilities
 - apt-get update
@@ -20,25 +22,25 @@
 - apt-get install git
 - apt-get upgrade
 
-## Install - Tensorflow
-- apt-get install python-pip python-dev
-- apt-get install libcupti-dev (only for GPU: https://www.tensorflow.org/install/install_linux)
+## Install - Tensorflow (https://www.tensorflow.org/install/install_linux)
 - pip install --upgrade pip
+- apt-get install python-pip python-dev
+- apt-get install libcupti-dev (only for GPU)
 - pip install tensorflow or pip install tensorflow-gpu (for GPU)
 
-## Install - DQN
+## Install - DQN (https://github.com/devsisters/DQN-tensorflow.git)
 - Read the installation info from here if you need additional info: https://github.com/devsisters/DQN-tensorflow. Next are the commands I have executed
   - cd
-  - mkdir experiments
-  - cd experiments 
-  - git clone https://github.com/devsisters/DQN-tensorflow.git
-  - pip install tqdm gym[all] --> ERROR
-    - https://github.com/openai/gym/issues/218
+  - mkdir prj
+  - cd prj
+  - git clone https://github.com/devsisters/DQN-tensorflow.git
+  - pip install tqdm gym[all]
+    - If ERROR: https://github.com/openai/gym/issues/218
       - apt-get install xvfb libav-tools xorg-dev libsdl2-dev swig cmake
       - re-run: pip install tqdm gym[all] // Just to be sure
   - execution of "python main.py --env_name=Breakout-v0 --is_train=True --display=False"
-    - If error: GPU
-      - Disable GPU in main.py
+    - If error: GPU (default is GPU on)
+      - Disable GPU in main.py
         - flags.DEFINE_boolean('use_gpu', False, 'Whether to use gpu or not')
     - If error: Memory
       - Change memory usage in config.py
@@ -55,8 +57,8 @@
 
 ## Save an image of this container:
 - nvidia-docker commit ai-dqn stefanutti/cuda:8.0-cudnn5-runtime-ubuntu16.04-tf-dqn-1.2
- nvidia-docker rm ai-dqn
-- nvidia-docker run -it --name ai-dqn -p -v /tmp/.X11-unix:/tmp/.X11-unix -v /docker-mounts:/docker-mounts -e DISPLAY=unix$DISPLAY --device /dev/dri --device /dev/snd stefanutti/cuda:8.0-cudnn5-runtime-ubuntu16.04-tf-dqn-1.2 bash
+- nvidia-docker rm ai-dqn
+- nvidia-docker run -it --name ai-dqn -p 6006:6006 -v /tmp/.X11-unix:/tmp/.X11-unix -v /docker-mounts:/docker-mounts -e DISPLAY=unix$DISPLAY --device /dev/dri --device /dev/snd stefanutti/cuda:8.0-cudnn5-runtime-ubuntu16.04-tf-dqn-1.2 bash
 
 ## Other useful commands:
 - nvidia-docker start ai-dqn
