@@ -67,5 +67,6 @@
 
 ## Extra
 - tensorboard --logdir training_summaries &
+- python main.py --env_name=Breakout-v0 --is_train=True --display=True
 
 Bye
