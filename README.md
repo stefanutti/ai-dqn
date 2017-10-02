@@ -14,7 +14,7 @@
 
 ## Start a container:
 - nvidia-docker run -it --name ai-dqn -p 6006:6006 -v /tmp/.X11-unix:/tmp/.X11-unix -v /docker-mounts:/docker-mounts -e DISPLAY=unix$DISPLAY --device /dev/dri --device /dev/snd nvidia/cuda:8.0-cudnn5-runtime-ubuntu16.04 bash
-  - port 6006 is the standard Tensorboard port
+  - port 6006 is the standard Tensorboard port
 
 ## Install - utilities
 - apt-get update
