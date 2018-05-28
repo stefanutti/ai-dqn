@@ -14,7 +14,10 @@
 
 ## Start a container:
 - nvidia-docker run -it --name ai-dqn -p 6006:6006 -v /tmp/.X11-unix:/tmp/.X11-unix -v /docker-mounts:/docker-mounts -e DISPLAY=unix$DISPLAY --device /dev/dri --device /dev/snd nvidia/cuda:8.0-cudnn5-runtime-ubuntu16.04 bash
-  - port 6006 is the standard Tensorboard port
+
+- nvidia-docker run -it --name ai-dqn -p 6006:6006 -v /tmp/.X11-unix:/tmp/.X11-unix -v /docker-mounts:/docker-mounts -e DISPLAY=unix$DISPLAY --device /dev/dri --device /dev/snd nvidia/cuda:9.1-cudnn7-runtime-ubuntu16.04 bash
+
+- port 6006 is the standard Tensorboard portport 6006 is the standard Tensorboard port
 
 ## Install - utilities
 - apt-get update
@@ -23,10 +26,11 @@
 - apt-get upgrade
 
 ## Install - Tensorflow (https://www.tensorflow.org/install/install_linux)
-- pip install --upgrade pip
 - apt-get install python-pip python-dev
+- pip install --upgrade pip
 - apt-get install libcupti-dev (only for GPU)
 - pip install tensorflow or pip install tensorflow-gpu (for GPU)
+  - https://github.com/pypa/pip/issues/5240
 
 ## Install - DQN (https://github.com/devsisters/DQN-tensorflow.git)
 - Read the installation info from here if you need additional info: https://github.com/devsisters/DQN-tensorflow. Next are the commands I have executed
